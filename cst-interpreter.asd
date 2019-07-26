@@ -1,11 +1,15 @@
-;;;; cst-interpreter.asd
+#|
+  This file is a part of cst-interpreter.
+  (c) 2019 Finn Völkel 
+  Author: Finn Völkel  (first.lastname@gmail.com)
+|#
 
-(asdf:defsystem #:cst-interpreter
-  :description "Describe cst-interpreter here"
-  :author "Your Name <your.name@example.com>"
-  :license  "Specify license here"
+(asdf:defsystem cst-interpreter
   :version "0.0.1"
+  :author "Finn Völkel"
+  :license "MIT Licence"
   :serial t
-  :depends-on (#:eclector #:eclector-concrete-syntax-tree #:parachute)
-  :components ((:file "package")
-               (:file "cst-interpreter")))
+  :depends-on ("concrete-syntax-tree")
+  :components ((:file "cst-interpreter"))
+  :description ""
+  :in-order-to ((test-op (test-op "cst-interpreter-test"))))

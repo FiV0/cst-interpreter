@@ -1,9 +1,17 @@
-# cst-interpreter
-### _Your Name <your.name@example.com>_
+# Cst-Interpreter
 
-This is a project to do ... something.
+## Usage
+
+## Installation
+
+## Author
+
+* Finn Völkel (first.lastname@gmail.com)
+
+## Copyright
+
+Copyright (c) 2019 Finn Völkel (first.lastname@gmail.com)
 
 ## License
 
-Specify license here
-
+Licensed under the MIT Licence License.
