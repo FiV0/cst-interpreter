@@ -9,7 +9,8 @@
   :author "Finn Völkel"
   :license "MIT Licence"
   :serial t
-  :depends-on ("concrete-syntax-tree"
+  :depends-on ("arrow-macros" 
+               "concrete-syntax-tree"
                "eclector"
                "eclector-concrete-syntax-tree")
   :components ((:file "cst-interpreter"))
