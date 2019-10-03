@@ -22,18 +22,20 @@
 (define-condition illegal-function-call (error) ())
 (define-condition unknown-symbol (error) ())
 
-(defun cst-evaluate (cst)
-  "Evaluates a cst."
+(defun cst-evaluate (cst &optional (env (make-null-environment)))
+  "Evaluates a CST in the given ENV."
   (if (cst:atom cst)
       cst
       (evaluate-compound-form cst)))
 
-(defun evaluate-csts (csts)
+(defun evaluate-csts (csts env)
   "Evaluates a list of csts."
-  (mapcar #'evaluate-cst csts))
+  (mapcar #'(lambda (cst) (cst-evaluate cst env)) csts))
 
-(defun evaluate-compound-form (cst)
+(defun evaluate-compound-form (cst env)
   (let ((first-raw (-> cst cst:first cst:raw)))
+    (unless (fun-in-env? (symbol-name first-raw) env)
+      (error 'undefined-function))
     ))
 
 (defun evaluate-function-form (cst)
@@ -45,9 +47,11 @@
 (defun evaluate-special-form (cst)
   (error 'not-implemented))
 
+(defun def-lambda (args body)
+  (cst:cons (cst:cst-from-expression 'lambda) (cst:cons args (cst:cstify (list body)))))
+
 (defun cst-print (cst)
   (format *standard-output* "~a~%" cst))
-
 
 ;; helper stuff
 (defun cst-to-list (cst)

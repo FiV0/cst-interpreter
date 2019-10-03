@@ -13,6 +13,8 @@
                "concrete-syntax-tree"
                "eclector"
                "eclector-concrete-syntax-tree")
-  :components ((:file "cst-interpreter"))
+  :components ((:file "environment")
+               (:file "standard-lib")
+               (:file "cst-interpreter"))
   :description ""
   :in-order-to ((test-op (test-op "cst-interpreter-test"))))
